@@ -129,8 +129,34 @@ const ExpenseTracker = () => {
             </div>
           </div>
 
+          {expenses.length > 0 && (
+            <div className='box2 text-white bg-white p-4'>
+              <h2 className='text-dark text-center'>Monthly Expenses</h2>
+              <table className='table table-bordered'>
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {expenses.map((expense, index) => (
+                    <tr key={index}>
+                      <td>{expense.title}</td>
+                      <td>Rs. {expense.amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div>
+                <h3>Total Savings</h3>
+                <p>Rs. {calculateMonthlySavings()}</p>
+              </div>
+            </div>
+          )}
+
           <div className="monthly-details bg-white p-4">
-            <h2>Monthly Details</h2>
+            <h2>Savings Details</h2>
             <table className='table table-bordered'>
               <thead>
                 <tr>
@@ -163,7 +189,7 @@ const ExpenseTracker = () => {
             </table>
 
             <div>
-              <h3>Total Savings</h3>
+              <h3>Grand Total Savings</h3>
               <p>Rs. {calculateGrandSavings()}</p>
             </div>
           </div>
